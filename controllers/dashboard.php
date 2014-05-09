@@ -32,5 +32,13 @@ class Dashboard extends Controller
         // calling the render function
         $this->view->render('dashboard/index');
     }
+    
+    
+    function logout()
+    {
+        Session::destroy();
+        header('location: ../login');
+        exit;
+    }
 
 }
