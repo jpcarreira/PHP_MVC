@@ -25,6 +25,10 @@ class Bootstrap
         {
             require 'controllers/index.php';
             $controller = new Index();
+            
+            // we need to call the index method to render the window
+            $controller->index();
+            
             // we return here to prevent the rest of the code below 
             // to be processed
             return false;
@@ -59,6 +63,10 @@ class Bootstrap
             if (isset($url[1])) 
             {
                 $controller->{$url[1]}();
+            }
+            else
+            {
+                $controller->index();
             }
         }
     }

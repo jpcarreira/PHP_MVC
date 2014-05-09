@@ -13,10 +13,14 @@ class Index extends Controller
         parent::__construct();
         
         // debug message
-        // echo 'Controllers/index.php: Index controller';
+        // echo 'Controllers/index.php: Index controller';  
+    }
     
-        // rendering the view
-        $this->view->render('index/index');
+    
+    function index()
+    {
+       // rendering the view
+        $this->view->render('index/index'); 
     }
 
 }

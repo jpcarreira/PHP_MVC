@@ -14,9 +14,12 @@ class Login extends Controller
         
         // debug message
         // echo 'Controllers/login.php: Login controller';
+    }
+
     
+    function index()
+    {
         // rendering the view
         $this->view->render('login/index');
     }
-
 }

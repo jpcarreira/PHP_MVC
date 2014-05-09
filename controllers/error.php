@@ -13,10 +13,14 @@ class Error extends Controller
     {
         parent::__construct();
         
-        echo 'This is an error </br>'; 
-        
         // assigning a value to the view
         $this->view->msg = 'This page doesnt exist!';
+    }
+    
+    
+    function index()
+    {
+        echo 'This is an error </br>'; 
         
         // calling the render function
         $this->view->render('error/index');
