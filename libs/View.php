@@ -16,8 +16,7 @@ class View
         //echo 'libs/View: This is the main View <br/>';
     }
 
-    
-    
+
     /**
      * render()
      * 
