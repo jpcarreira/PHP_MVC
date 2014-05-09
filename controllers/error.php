@@ -20,7 +20,8 @@ class Error extends Controller
     
     function index()
     {
-        echo 'This is an error </br>'; 
+        // debug message
+        //echo 'This is an error </br>'; 
         
         // calling the render function
         $this->view->render('error/index');
