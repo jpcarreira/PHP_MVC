@@ -22,6 +22,13 @@ class Index extends Controller
        // rendering the view
         $this->view->render('index/index'); 
     }
+    
+    
+    // test function
+    function details()
+    {
+        $this->view->render('index/index');
+    }
 
 }
 

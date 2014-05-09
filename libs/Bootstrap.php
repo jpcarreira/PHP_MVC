@@ -10,6 +10,7 @@ class Bootstrap
 
     function __construct() 
     {
+        
         // splitting string into controller and method
         // e.g: index/someFunction -> [0] = index and [1] = someFunction
         $url = isset($_GET['url']) ? $_GET['url'] : null;
@@ -45,16 +46,24 @@ class Bootstrap
         }
         else
         {
-            require 'controllers/error.php';
-            $controller = new Error();
-            return false;
+            $this->error();
         }
+        
+        $controller = new $url[0];
 
         // if [2] exists then it's a value that needs to be passed to the function
         // e.g. help/doSomething/2, 2 will be the argument
         if (isset($url[2])) 
         {
-            $controller->{$url[1]}($url[2]);
+            // checking if method exists
+            if(method_exists($controller, $url[1]))
+            {
+                $controller->{$url[1]}($url[2]);
+            }
+            else
+            {
+                $this->error();
+            }
         } 
         else 
         {
@@ -62,12 +71,28 @@ class Bootstrap
             // that function
             if (isset($url[1])) 
             {
-                $controller->{$url[1]}();
+                if(method_exists($controller, $url[1]))
+                {
+                    $controller->{$url[1]}();
+                }
+                else
+                {
+                    $this->error();
+                }
             }
             else
             {
                 $controller->index();
             }
         }
+    }
+    
+    
+    function error()
+    {
+        require 'controllers/error.php';
+        $controller = new Error();
+        $controller->index();
+        return false;
     }
 }
