@@ -20,6 +20,10 @@ class Help extends Controller
     {
         echo 'we are inside other' . '</br>';
         echo 'optional = ' . $arg . '</br>';
+    
+        // requiring the respective model
+        require 'models/help_model.php';
+        $model = new Help_Model();
     }
     
 }
