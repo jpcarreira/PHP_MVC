@@ -1,8 +1,8 @@
-</div>
+        </div>
 
-<div id="footer">
-    (C) João Carreira 2014
-</div>
+        <div id="footer">
+            (C) João Carreira 2014
+        </div>
 
-</body>
+    </body>
 </html>
