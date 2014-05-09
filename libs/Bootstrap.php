@@ -12,13 +12,24 @@ class Bootstrap
     {
         // splitting string into controller and method
         // e.g: index/someFunction -> [0] = index and [1] = someFunction
-        $url = $_GET['url'];
+        $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
         // uncomment below to debug $url
         //print_r($url);
 
+        // calling the index controller in case url is empty
+        // (that happens when we type /localhost/mvc)
+        if(empty($url[0]))
+        {
+            require 'controllers/index.php';
+            $controller = new Index();
+            // we return here to prevent the rest of the code below 
+            // to be processed
+            return false;
+        }
+        
         // checking if file exits before instantiating the controller
         $file = 'controllers/' . $url[0] . '.php';
         if(file_exists($file))
