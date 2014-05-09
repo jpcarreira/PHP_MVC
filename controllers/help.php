@@ -12,7 +12,7 @@ class Help extends Controller
     {
         parent::__construct();
         
-        echo 'Help page' . '</br>';
+        $this->view->render('help/index');
     }
     
     

@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    alert('testing JS');
+    //alert('testing JS');
 });
