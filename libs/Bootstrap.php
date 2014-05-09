@@ -16,7 +16,8 @@ class Bootstrap
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
-        print_r($url);
+        // uncomment below to debug $url
+        //print_r($url);
 
         // checking if file exits before instantiating the controller
         $file = 'controllers/' . $url[0] . '.php';
@@ -29,7 +30,9 @@ class Bootstrap
         }
         else
         {
-            throw new Exception('The file ' . $file . ' does not exist');
+            require 'controllers/error.php';
+            $controller = new Error();
+            return false;
         }
 
         // if [2] exists then it's a value that needs to be passed to the function
