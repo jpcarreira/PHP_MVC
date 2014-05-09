@@ -7,10 +7,15 @@
  */
 
 // TOOD: use an auto-loader
+
+// requires for libs
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';
+require 'libs/Database.php';
 require 'libs/Model.php';
 require 'libs/View.php';
+
+
 require 'config/paths.php';
 require 'config/database.php';
 

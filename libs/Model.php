@@ -11,7 +11,11 @@ class Model
 
     function __construct() 
     {
-        //$this->database = new Database();
+        // the database should only be accessible from the model so we 
+        // instantitate the DB here
+        // (so the DB is accessible in every model)
+        $this->db = new Database();
+        
     }
 
 }
