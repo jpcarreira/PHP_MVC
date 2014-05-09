@@ -12,6 +12,7 @@ class Help extends Controller
     {
         parent::__construct();
         
+        // calling the rendering function to display the correct view
         $this->view->render('help/index');
     }
     
