@@ -3,16 +3,8 @@
     require 'views/header.php';
 ?>
 
-this is the error view!
-
+views/index/index.php: this is the main page! Welcome!
 <hr />
-
-<?php
-    // echoing out the message sent by the controller
-    echo $this->msg;
-
-?>
-
 
 <?php
     require 'views/footer.php';

@@ -12,7 +12,7 @@ class View
 
     function __construct() 
     {
-        echo 'This is the main View <br/>';
+        echo 'libs/View: This is the main View <br/>';
     }
 
     

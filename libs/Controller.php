@@ -13,7 +13,7 @@ class Controller
 
     function __construct() 
     {
-        echo 'This is the Main Controller <br/>';
+        echo 'libs/Controller: This is the Main Controller <br/>';
         
         // the main controller is the one that will instantiate the view
         // (ensuring that all other controllers will have a view as well)

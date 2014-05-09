@@ -12,7 +12,11 @@ class Index extends Controller
     {
         parent::__construct();
         
-        echo 'Index controller';
+        // debug message
+        // echo 'Controllers/index.php: Index controller';
+    
+        // rendering the view
+        $this->view->render('index/index');
     }
 
 }
