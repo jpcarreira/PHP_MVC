@@ -19,9 +19,6 @@ class Login extends Controller
     
     function index()
     {
-        require 'models/login_model.php';
-        $model = new Login_Model();
-        
         // rendering the view
         $this->view->render('login/index');
     }

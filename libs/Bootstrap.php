@@ -49,7 +49,9 @@ class Bootstrap
             $this->error();
         }
         
+        // instantiating the controller and loading the respective model
         $controller = new $url[0];
+        $controller->loadModel($url[0]);
 
         // if [2] exists then it's a value that needs to be passed to the function
         // e.g. help/doSomething/2, 2 will be the argument
