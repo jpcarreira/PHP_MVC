@@ -7,6 +7,7 @@
  */
 
 require 'libs/Bootstrap.php';
+require 'libs/Controller.php';
 
 // instantiating the bootstrap
 $app = new Bootstrap();

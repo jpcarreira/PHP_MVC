@@ -6,10 +6,12 @@
  * (application's help page)
  */
 
-class Help 
+class Help extends Controller
 {
     function __construct() 
     {
+        parent::__construct();
+        
         echo 'Help page' . '</br>';
     }
     
