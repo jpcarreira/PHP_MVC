@@ -36,16 +36,27 @@
         <?php SESSION::init(); ?>
         
         <div id="header"> 
-            <a href="<?php echo URL;?>index">Index</a>
-            <a href="<?php echo URL;?>help">Help</a>
-            
-            <!-- displaying login or logout according to SESSION -->
+                
+            <!-- if a user is not logged in we show only Index and Help -->
+            <?php if(SESSION::get('loggedIn') == false) : ?>
+                <a href="<?php echo URL;?>index">Index</a>
+                <a href="<?php echo URL;?>help">Help</a>
+            <?php endif; ?>
+                
+            <!-- displaying dashboard and logout to logged users -->
             <?php if(SESSION::get('loggedIn') == true) : ?>
+                <a href="<?php echo URL;?>dashboard">Dashboard</a>
+                
+                <!-- only the OWNER can see the users link -->
+                <?php if(SESSION::get('role') == 'owner') : ?>
+                    <a href="<?php echo URL;?>user">Users</a>
+                <?php endif; ?>
+                
                 <a href="<?php echo URL;?>dashboard/logout">Logout</a>
             
+            <!-- Login is visible when no one is logged in -->    
             <?php else : ?>
                 <a href="<?php echo URL;?>login">Login</a>
-            
             <?php endif ?>
                 
         </div>
