@@ -9,3 +9,9 @@ Dashboard... logged in only!
     <input type="submit" />
     
 </form>
+
+
+<!-- div to list all data inserted into database -->
+<div id="listInserts"></div>
+    
+    

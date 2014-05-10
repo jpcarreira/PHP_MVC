@@ -3,6 +3,21 @@
 
 $(function()
 {
+    // get call to display all data from db
+    
+    $.get('dashboard/xhrGetListings', function(o)
+    {
+        console.log(o);
+        
+        // loop to go trough everything
+        for(var i = 0; i < o.length; i++)
+        {
+            $('#listInserts').append('<div>' + o[i].text + '</div>');
+        }
+        
+    }, 'json');
+    
+    
     $('#randomInsert').submit(function()
     {
         // serializing the form
@@ -18,6 +33,8 @@ $(function()
         // posting based on url and data, with the respective call back function
         $.post(url, data, function(o)
         {
+            console.log(o);
+            $('#listInserts').append('<div>' + o + '</div>');
             alert('inserting in db');
         });
         

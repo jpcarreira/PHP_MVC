@@ -45,6 +45,11 @@ class Dashboard extends Controller
     }
     
     
+    /**
+     * xhrInsert()
+     * 
+     * Ajax call to insert data into database
+     */
     function xhrInsert()
     {
         // calling the model's function that will handle the logic
@@ -53,5 +58,19 @@ class Dashboard extends Controller
         // debug message
         //echo 'xhrInsert()';
     }
+    
+    
+    /**
+     * xhrGetListings
+     * 
+     * Ajax call to list all inserted data 
+     */
+    function xhrGetListings()
+    {
+        $this->model->xhrGetListings();
+    }
+    
+    
+    
 
 }
