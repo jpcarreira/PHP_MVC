@@ -54,9 +54,6 @@ class Dashboard extends Controller
     {
         // calling the model's function that will handle the logic
         $this->model->xhrInsert();
-        
-        // debug message
-        //echo 'xhrInsert()';
     }
     
     
@@ -70,7 +67,13 @@ class Dashboard extends Controller
         $this->model->xhrGetListings();
     }
     
-    
-    
-
+    /**
+     * xhrDeleteListing
+     * 
+     * Ajax call to delete an given row from the database
+     */
+    function xhrDeleteListing()
+    {
+        $this->model->xhrDeleteListing();
+    }
 }

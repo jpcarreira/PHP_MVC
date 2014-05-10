@@ -30,7 +30,9 @@ class Dashboard_Model extends Model
         $sth = $this->db->prepare('INSERT INTO data (text) VALUES (:text)');
         $sth->execute(array(':text' => $text));
         
-        echo json_encode($text);
+        $data = array('text' => $text, 'id' => $this->db->lastInsertId());
+        
+        echo json_encode($data);
     }
     
     
@@ -40,7 +42,13 @@ class Dashboard_Model extends Model
         $sth->setFetchMode(PDO::FETCH_ASSOC);
         $sth->execute();
         $data = $sth->fetchAll();
-        echo json_encode($data);
+        echo json_encode($data);   
     }
-
+    
+    
+    function xhrDeleteListing()
+    {
+        $sth = $this->db->prepare('DELETE FROM data WHERE id = ' . $_POST['id']);
+        $sth->execute();
+    }
 }
