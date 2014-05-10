@@ -23,14 +23,15 @@ class Login_Model extends Model
     public function run()
     {
         //querying the DB
-        $sth = $this->db->prepare("SELECT id FROM users WHERE login = :login AND password = MD5(:password)");
+        $sth = $this->db->prepare("SELECT id, role FROM users WHERE login = :login AND password = MD5(:password)");
         
         $sth->execute(array(
                 ':login' => $_POST['login'],
                 ':password' => $_POST['password']
                 ));
         
-        $data = $sth->fetchAll();
+        // fetching some data to distinguish which user has logged in
+        $data = $sth->fetch();
         
         // debug message to see the result of the query
         //print_r($data);
@@ -42,6 +43,9 @@ class Login_Model extends Model
         {
             // starting the session
             Session::init();
+            
+            // the user's role is saved in a session variable
+            Session::set('role', $data['role']);
             
             // setting the session variable
             Session::set('loggedIn', true);
