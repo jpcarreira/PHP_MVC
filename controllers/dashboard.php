@@ -24,6 +24,9 @@ class Dashboard extends Controller
             header('location: ../login');
             exit;
         }
+        
+        // variable with a specific js file for this controller
+        $this->view->js = array('dashboard/js/default.js');
     }
     
     

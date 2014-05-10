@@ -15,6 +15,19 @@
         <script type="text/javascript" src="<?php echo URL;?>public/js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo URL;?>public/js/custom.js"></script>
         
+        <!-- checking if there is a specific js for this page -->
+        <?php 
+            if(isset($this->js))
+            {
+                // looping the array
+                foreach ($this->js as $js)
+                {
+                    echo '<script type="text/javascript" src="' . URL . 'views/' . $js . '"></script>';
+                }        
+            }
+        
+        ?>
+        
     </head>
     
     <body>
