@@ -43,5 +43,15 @@ class Dashboard extends Controller
         header('location: ../login');
         exit;
     }
+    
+    
+    function xhrInsert()
+    {
+        // calling the model's function that will handle the logic
+        $this->model->xhrInsert();
+        
+        // debug message
+        //echo 'xhrInsert()';
+    }
 
 }
