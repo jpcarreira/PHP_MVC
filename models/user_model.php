@@ -30,12 +30,15 @@ class User_Model extends Model
     
     public function userSingleList($id)
     {
+        // @TODO: not working yet
+        //return $this->db->select('SELECT id, login, role FROM users WHERE id = :id', array(':id' => $id));
+        
         // sql statement
         $sth = $this->db->prepare('SELECT id, login, role FROM users WHERE id = :id');
         $sth->execute(array(
             ':id' => $id
         ));
-        return $sth->fetch();
+        return $sth->fetch(); 
     }
     
     
@@ -61,24 +64,13 @@ class User_Model extends Model
     
     public function delete($id)
     {
-        // sql statement
-        $sth = $this->db->prepare('SELECT role FROM users WHERE id = :id');
+        $result = $this->db->select('SELECT role FROM users WHERE id = :id', array(':id' => $id));
         
-        $sth->execute(array(
-            ':id' => $id
-            ));
-        
-        $data = $sth->fetch();
-        
-        // preventing from deleting a owner role
-        if($data['role'] == 'owner')
+        if($result[0]['role'] == 'owner')
         {
-            return;
+            return false;
         }
-        
-        $sth = $this->db->prepare('DELETE FROM users WHERE id = :id');
-        $sth->execute(array(
-            ':id' => $id
-            ));
+       
+        $this->db->delete('users', "id = $id");
     }
 }

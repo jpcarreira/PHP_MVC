@@ -20,6 +20,8 @@ class Database extends PDO
     }
     
     
+    // @TODO: review this select for singleUser select
+    
     /**
      * select
      * 
@@ -36,7 +38,7 @@ class Database extends PDO
         
         foreach($array as $key => $value)
         {
-            $sth->bindValue(":$key", $value);
+            $sth->bindValue("$key", $value);
         }
         
         $sth->execute();
@@ -107,5 +109,21 @@ class Database extends PDO
         
         // executing
         $sth->execute();
+    }
+    
+    
+    /**
+     * delete
+     * 
+     * deletes one row from a database table
+     * 
+     * @param string $table         database table name
+     * @param string $where         the 'where' query part
+     * @param integer $limit        limit the number of rows to be deleted
+     * @return integer              affected rows
+     */
+    public function delete($table, $where, $limit = 1)
+    {
+        return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
     }
 }
