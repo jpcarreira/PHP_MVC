@@ -24,7 +24,7 @@ class User extends Controller
         if($logged == false || $role != 'owner')
         {
             Session::destroy();
-            header('location: ../login');
+            header('location: ' . URL . 'error');
             exit;
         }
         
