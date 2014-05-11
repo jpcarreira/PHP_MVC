@@ -65,6 +65,20 @@ class User_Model extends Model
     public function delete($id)
     {
         // sql statement
+        $sth = $this->db->prepare('SELECT role FROM users WHERE id = :id');
+        
+        $sth->execute(array(
+            ':id' => $id
+            ));
+        
+        $data = $sth->fetch();
+        
+        // preventing from deleting a owner role
+        if($data['role'] == 'owner')
+        {
+            return;
+        }
+        
         $sth = $this->db->prepare('DELETE FROM users WHERE id = :id');
         $sth->execute(array(
             ':id' => $id
