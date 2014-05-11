@@ -24,10 +24,7 @@ class User_Model extends Model
      */
     public function userList()
     {
-        // sql statement
-        $sth = $this->db->prepare('SELECT id, login, role FROM users');
-        $sth->execute();
-        return $sth->fetchAll();
+        return $this->db->select('SELECT id, login, role FROM users');
     }
     
     

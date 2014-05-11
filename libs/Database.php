@@ -21,6 +21,31 @@ class Database extends PDO
     
     
     /**
+     * select
+     * 
+     * performs a select query
+     * 
+     * @param string $sql           sql statement string
+     * @param array $array          parameters to bind
+     * @param constant $fetchMode   PDO fetch mode
+     * @return mixed
+     */
+    public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+    {
+        $sth = $this->prepare($sql);
+        
+        foreach($array as $key => $value)
+        {
+            $sth->bindValue(":$key", $value);
+        }
+        
+        $sth->execute();
+        return $sth->fetchAll($fetchMode);
+        
+    }
+    
+    
+    /**
      * insert
      * 
      * function to insert data into a database table
