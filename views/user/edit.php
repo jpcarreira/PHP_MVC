@@ -4,6 +4,8 @@
 <form method="post" action="<?php echo URL; ?>user/editSave/<?php echo $this->user['id']; ?>">
     <label>Login</label>
     <input type="text" name="login" value="<?php echo $this->user['login']; ?>" /><br />
+    <label>Password</label>
+    <input type="text" name="password"/><br />
   
     <label>Role</label>
         <select name="role">

@@ -48,7 +48,7 @@ class User_Model extends Model
         $sth = $this->db->prepare('INSERT INTO users (login, password, role) VALUES (:login, :password, :role)');
         $sth->execute(array(
             ':login' => $data['login'],
-            ':password' => $data['password'],
+            ':password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
             ':role' => $data['role']
         ));
     }
@@ -57,10 +57,11 @@ class User_Model extends Model
     public function editSave($data)
     {
         // sql statement
-        $sth = $this->db->prepare('UPDATE users SET login = :login, role = :role WHERE id = :id');
+        $sth = $this->db->prepare('UPDATE users SET login = :login, password = :password, role = :role WHERE id = :id');
         $sth->execute(array(
             ':id' => $data['id'],
             ':login' => $data['login'],
+            ':password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
             ':role' => $data['role']
         ));
     }

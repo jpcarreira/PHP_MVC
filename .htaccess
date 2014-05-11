@@ -1,5 +1,7 @@
-# rules to redirect calls to index.php
+#php_flat display_errors on
+#php_value error_reporting 9999
 
+# rules to redirect calls to index.php
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d

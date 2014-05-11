@@ -23,11 +23,11 @@ class Login_Model extends Model
     public function run()
     {
         //querying the DB
-        $sth = $this->db->prepare("SELECT id, role FROM users WHERE login = :login AND password = MD5(:password)");
+        $sth = $this->db->prepare("SELECT id, role FROM users WHERE login = :login AND password = :password");
         
         $sth->execute(array(
                 ':login' => $_POST['login'],
-                ':password' => $_POST['password']
+                ':password' => Hash::create('md5', $_POST['password'], HASH_PASSWORD_KEY)
                 ));
         
         // fetching some data to distinguish which user has logged in

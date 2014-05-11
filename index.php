@@ -15,10 +15,12 @@ require 'libs/Database.php';
 require 'libs/Model.php';
 require 'libs/Session.php';
 require 'libs/View.php';
+require 'libs/Hash.php';
 
-
+// config files
 require 'config/paths.php';
 require 'config/database.php';
+require 'config/constants.php';
 
 // instantiating the bootstrap
 $app = new Bootstrap();
