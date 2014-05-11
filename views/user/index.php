@@ -7,7 +7,7 @@
     <label>Password</label>
     <input type="text" name="password" /><br />
     <label>Role</label>
-        <select id="role">
+        <select name="role">
             <option value="default">Default</option>
             <option value="admin">Admin</option>
         </select><br />

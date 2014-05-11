@@ -45,7 +45,19 @@ class User extends Controller
     
     public function create()
     {
+        // user data stored in an array
+        $data = array();
+        $data['login'] = $_POST['login'];
+        $data['password'] = md5($_POST['password']);
+        $data['role'] = $_POST['role'];
         
+        // @TODO: do error checking
+        
+        // calling the model to insert the user
+        $this->model->create($data);
+        
+        // refreshing the page to display the new added user
+        header('location: ' . URL . 'user');
     }
     
     
