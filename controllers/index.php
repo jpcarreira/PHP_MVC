@@ -19,7 +19,7 @@ class Index extends Controller
     
     function index()
     {
-       // rendering the view
+        // rendering the view
         $this->view->render('index/index'); 
     }
     
