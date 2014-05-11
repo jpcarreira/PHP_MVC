@@ -10,11 +10,11 @@ class Bootstrap
 
     function __construct() 
     {
-        
         // splitting string into controller and method
         // e.g: index/someFunction -> [0] = index and [1] = someFunction
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
 
         // uncomment below to debug $url
