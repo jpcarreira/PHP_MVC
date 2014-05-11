@@ -63,7 +63,30 @@ class User extends Controller
     
     public function edit($id)
     {
+        // fetch the individual user using the model
+        // the user data is assigned to a view's variable
+        $this->view->user = $this->model->userSingleList($id);
         
+        // rendering the edit view
+        $this->view->render('user/edit');
+    }
+    
+    
+    public function editSave($id)
+    {
+        // user data stored in an array
+        $data = array();
+        $data['id'] = $id;
+        $data['login'] = $_POST['login'];
+        $data['password'] = md5($_POST['password']);
+        $data['role'] = $_POST['role'];
+        
+        // @TODO: do error checking
+        
+        // calling the model to edit the user
+        $this->model->editSave($data);
+        
+        header('location: ' . URL . 'user');
     }
     
     
