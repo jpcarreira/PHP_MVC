@@ -54,15 +54,13 @@ class User_Model extends Model
     
     public function editSave($data)
     {
-        // sql statement
-        $sth = $this->db->prepare('UPDATE users SET login = :login, password = :password, role = :role WHERE id = :id');
-        $sth->execute(array(
-            ':id' => $data['id'],
-            ':login' => $data['login'],
-            ':password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
-            ':role' => $data['role']
-        ));
+        $this->db->update('users', array(
+            'login' => $data['login'],
+            'password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
+            'role' => $data['role']
+        ), "id = {$data['id']}");
     }
+    
     
     public function delete($id)
     {
@@ -72,9 +70,4 @@ class User_Model extends Model
             ':id' => $id
             ));
     }
-    
-    
-    
-    
-    
 }

@@ -61,11 +61,26 @@ class Database extends PDO
      */
     public function update($table, $data, $where)
     {
+        // sorting the array by key
+        ksort($data);
         
+        $fieldDetails = NULL;
+        foreach ($data as $key => $value)
+        {
+            $fieldDetails .= "$key=:$key,";
+        }
+        $fieldDetails = rtrim($fieldDetails, ', ');
+        
+        // sql statement
+        $sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+        
+        // binding key-value
+        foreach($data as $key => $value)
+        {
+            $sth->bindValue(":$key", $value);
+        }
+        
+        // executing
+        $sth->execute();
     }
-    
-    
-
-    
-    
 }
