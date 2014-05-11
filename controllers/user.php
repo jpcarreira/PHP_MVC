@@ -69,7 +69,11 @@ class User extends Controller
     
     public function delete($id)
     {
+        // callings the model's method responsible to delete a user
+        $this->model->delete($id);
         
+        // refreshing the page to display all the users
+        header('location: ' . URL . 'user');
     }
     
 }
