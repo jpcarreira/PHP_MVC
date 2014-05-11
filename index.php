@@ -1,9 +1,7 @@
 <?php
 
 // config files
-require 'config/paths.php';
-require 'config/database.php';
-require 'config/constants.php';
+require 'config.php';
 
 function __autoload($class)
 {
