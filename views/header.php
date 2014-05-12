@@ -28,20 +28,9 @@
             }
         
         ?>
-        
-        <script>
-            $(function(){
-                $("#test").datepicker();
-            })
-        </script>
-        
     </head>
     
     <body>
-        
-        <!-- testing jquery -->
-        <input id="test"/>
-        
         <!-- TODO: fix this session start later-->
         <?php SESSION::init(); ?>
         
