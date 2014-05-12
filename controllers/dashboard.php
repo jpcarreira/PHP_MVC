@@ -14,16 +14,7 @@ class Dashboard extends Controller
     {
         parent::__construct();
         
-        // starting a session
-        Session::init();
-        
-        $logged = Session::get('loggedIn');
-        if($logged == false)
-        {
-            Session::destroy();
-            header('location: ../login');
-            exit;
-        }
+        Auth::handleLoggin();
         
         // variable with a specific js file for this controller
         $this->view->js = array('dashboard/js/default.js');

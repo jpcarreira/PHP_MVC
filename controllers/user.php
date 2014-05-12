@@ -14,22 +14,7 @@ class User extends Controller
     {
         parent::__construct();
         
-        // starting a session
-        Session::init();
-        
-        // making sure the user is logged and is a 'owner'
-        $logged = Session::get('loggedIn');
-        $role = Session::get('role');
-        
-        // if a non authenticated user or a logged user without 'onwer' role tries
-        // to access this page we 'unlog' him (destroy session) and send him
-        // to error page
-        if($logged == false || $role != 'owner')
-        {
-            Session::destroy();
-            header('location: ' . URL . 'error');
-            exit;
-        }
+        Auth::handleLoggin();
     }
     
     
