@@ -33,11 +33,11 @@ class Note_Model extends Model
     }
     
     
-    public function noteSingleList($id)
+    public function noteSingleList($noteid)
     {
-        return $this->db->select('SELECT * FROM notes WHERE userid = :userid AND id = :id', array(
+        return $this->db->select('SELECT * FROM notes WHERE userid = :userid AND noteid = :noteid', array(
             ':userid' => $_SESSION['userid'],
-            ':id' => $id));
+            ':noteid' => $noteid));
     }
     
     
@@ -60,7 +60,7 @@ class Note_Model extends Model
             'content' => $data['content'],
         );
         
-        $this->db->update('notes', $postData, "id = {$data['id']} AND userid = {$_SESSION['userid']}");
+        $this->db->update('notes', $postData, "noteid = {$data['noteid']} AND userid = {$_SESSION['userid']}");
     }
     
     

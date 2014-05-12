@@ -59,6 +59,7 @@ class Note extends Controller
     {
         // user data stored in an array
         $data = array(
+            'noteid' => $id,
             'title' => $_POST['title'],
             'content' => $_POST['content']
         );
