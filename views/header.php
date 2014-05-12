@@ -45,6 +45,7 @@
             <!-- displaying dashboard and logout to logged users -->
             <?php if(SESSION::get('loggedIn') == true) : ?>
                 <a href="<?php echo URL;?>dashboard">Dashboard</a>
+                <a href="<?php echo URL;?>note">Notes</a>
                 
                 <!-- only the OWNER can see the users link -->
                 <?php if(SESSION::get('role') == 'owner') : ?>
