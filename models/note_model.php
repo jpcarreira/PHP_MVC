@@ -66,6 +66,6 @@ class Note_Model extends Model
     
     public function delete($id)
     {
-        $this->db->delete('notes', "id = {$data['id']} AND userid = {$_SESSION['userid']}");
+        $this->db->delete('notes', "noteid = $id AND userid = {$_SESSION['userid']}");   
     }
 }

@@ -19,6 +19,7 @@
         echo '<tr>';
         echo '<td>' . $value['title'] . '</td>';
         echo '<td>' . $value['date_added'] . '</td>';
+        echo '<td><a href="' . URL . 'note/delete/' . $value['noteid']  .'">Delete</td>';
         echo '</tr>';
     }
 ?>
