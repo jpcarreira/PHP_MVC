@@ -47,8 +47,8 @@ class Note_Model extends Model
             'title' => $data['title'],
             'userid' => $_SESSION['userid'],
             'content' => $data['content'],
-            //@TODO: fix below
-            'date_added' => '',
+            //@TODO: use GMT
+            'date_added' => date('Y-m-d H:m:s')
         ));
     }
     
