@@ -26,7 +26,7 @@ class Dashboard_Model extends Model
            'text' => $text 
         ));
         
-        $data = array('text' => $text, 'id' => $this->db->lastInsertId());
+        $data = array('text' => $text, 'dataid' => $this->db->lastInsertId());
         
         echo json_encode($data);
     }
@@ -41,6 +41,6 @@ class Dashboard_Model extends Model
     
     function xhrDeleteListing()
     {
-        $this->db->delete('data', 'id = ' . $_POST['id']);
+        $this->db->delete('data', 'dataid = ' . $_POST['dataid']);
     }
 }
