@@ -61,7 +61,7 @@ class User extends Controller
     {
         // user data stored in an array
         $data = array();
-        $data['id'] = $id;
+        $data['userid'] = $id;
         $data['login'] = $_POST['login'];
         $data['password'] = $_POST['password'];
         $data['role'] = $_POST['role'];

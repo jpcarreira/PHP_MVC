@@ -23,7 +23,7 @@ class Login_Model extends Model
     public function run()
     {
         //querying the DB
-        $sth = $this->db->prepare("SELECT id, role FROM users WHERE login = :login AND password = :password");
+        $sth = $this->db->prepare("SELECT userid, role FROM users WHERE login = :login AND password = :password");
         
         $sth->execute(array(
                 ':login' => $_POST['login'],
@@ -49,6 +49,8 @@ class Login_Model extends Model
             
             // setting the session variable
             Session::set('loggedIn', true);
+            
+            Session::set('userid', $data['userid']);
             
             // 'sending' the user to the dashboard
             header('location: ../dashboard');

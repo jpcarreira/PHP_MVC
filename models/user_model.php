@@ -24,21 +24,13 @@ class User_Model extends Model
      */
     public function userList()
     {
-        return $this->db->select('SELECT id, login, role FROM users');
+        return $this->db->select('SELECT userid, login, role FROM users');
     }
     
     
-    public function userSingleList($id)
+    public function userSingleList($userid)
     {
-        // @TODO: not working yet
-        //return $this->db->select('SELECT id, login, role FROM users WHERE id = :id', array(':id' => $id));
-        
-        // sql statement
-        $sth = $this->db->prepare('SELECT id, login, role FROM users WHERE id = :id');
-        $sth->execute(array(
-            ':id' => $id
-        ));
-        return $sth->fetch(); 
+        return $this->db->select('SELECT userid, login, role FROM users WHERE userid = :userid', array(':userid' => $userid)); 
     }
     
     
@@ -58,19 +50,19 @@ class User_Model extends Model
             'login' => $data['login'],
             'password' => Hash::create('sha256', $data['password'], HASH_PASSWORD_KEY),
             'role' => $data['role']
-        ), "id = {$data['id']}");
+        ), "userid = {$data['userid']}");
     }
     
     
-    public function delete($id)
+    public function delete($userid)
     {
-        $result = $this->db->select('SELECT role FROM users WHERE id = :id', array(':id' => $id));
+        $result = $this->db->select('SELECT role FROM users WHERE userid = :userid', array(':userid' => $userid));
         
         if($result[0]['role'] == 'owner')
         {
             return false;
         }
        
-        $this->db->delete('users', "id = $id");
+        $this->db->delete('users', "userid = $userid");
     }
 }
