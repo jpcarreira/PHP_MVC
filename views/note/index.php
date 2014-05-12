@@ -19,8 +19,25 @@
         echo '<tr>';
         echo '<td>' . $value['title'] . '</td>';
         echo '<td>' . $value['date_added'] . '</td>';
-        echo '<td><a href="' . URL . 'note/delete/' . $value['noteid']  .'">Delete</td>';
+        echo '<td><a class="delete" href="' . URL . 'note/delete/' . $value['noteid']  .'">Delete</td>';
         echo '</tr>';
     }
 ?>
 </table>
+
+
+<script>
+    $(function(){
+        $('.delete').click(function(e)
+        {
+            var c = confirm("Are you sure you want to delete?");
+            if(c == false)
+            {
+                e.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
+    
+         
