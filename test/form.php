@@ -4,6 +4,9 @@
  */
 
 require '../libs/Form.php';
+require '../libs/Database.php';
+require '../config.php';
+
 ?>
 
 
@@ -30,14 +33,17 @@ if(isset($_REQUEST['run']))
         echo '<pre>';
         print_r($data);
         echo '</pre>';
+        
+        
+        // testing DB insertions
+        $db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+        
+        $db->insert('person', $data);
     } 
     catch (Exception $e) 
     {
         echo $e->getMessage();
     }
-    
-    
-    
 }
 ?>
 
