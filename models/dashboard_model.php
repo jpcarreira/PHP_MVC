@@ -19,22 +19,7 @@ class Dashboard_Model extends Model
     
     
     function xhrInsert()
-    {
-        // debug message
-        //echo 'dashboard model: xhrInsert()';
-        //echo $_POST['text'];
-    
-        /*
-        // inserting into database
-        $text = $_POST['text'];
-        
-        $sth = $this->db->prepare('INSERT INTO data (text) VALUES (:text)');
-        $sth->execute(array(':text' => $text));
-        
-        $data = array('text' => $text, 'id' => $this->db->lastInsertId());
-        
-         */
-        
+    {      
         $text = $_POST['text'];
         
         $this->db->insert('data', array(
