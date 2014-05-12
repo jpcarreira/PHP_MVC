@@ -10,21 +10,33 @@ require '../libs/Form.php';
 <?php
 if(isset($_REQUEST['run']))
 {
-    $form = new Form();
+    try
+    {
+        $form = new Form();
 
-    $form->post('name') ->post('age') ->post('gender');
-
-    //print_r($form);
+        $form   ->post('name')
+                ->val('minlength', 1) 
+            
+                ->post('age') 
+                ->val('minlength', 2)
+                ->val('digit')
+            
+                ->post('gender');
+        
+        $form->submit();
+        
+        echo 'The form passed!';
+        $data = $form->fetch();
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    } 
+    catch (Exception $e) 
+    {
+        echo $e->getMessage();
+    }
     
-    // fetches all posted data
-    $a = $form->fetch();
     
-    // fetches age only
-    $b = $form->fetch('age');
-
-    
-    print_r($a);
-    echo($b);
     
 }
 ?>
