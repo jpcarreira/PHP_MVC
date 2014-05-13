@@ -20,6 +20,9 @@ class Note extends Controller
     
     public function index()
     {
+        // setting the title
+        $this->view->title = 'Notes';
+
         // assingning notelist to the view
         $this->view->noteList = $this->model->noteList();
         

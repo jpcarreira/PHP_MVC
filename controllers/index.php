@@ -19,6 +19,9 @@ class Index extends Controller
     
     function index()
     {
+        // setting the title
+        $this->view->title = 'Main page';
+
         // rendering the view
         $this->view->render('index/index'); 
     }

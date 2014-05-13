@@ -23,6 +23,9 @@ class Error extends Controller
         // debug message
         //echo 'This is an error </br>'; 
         
+        // setting the title
+        $this->view->title = 'Error';
+        
         // calling the render function
         $this->view->render('error/index');
     }

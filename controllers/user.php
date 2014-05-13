@@ -20,6 +20,9 @@ class User extends Controller
     
     public function index()
     {
+        // setting the title
+        $this->view->title = 'Users';
+
         // saving all users in a view variable
         $this->view->userList = $this->model->userList();
         

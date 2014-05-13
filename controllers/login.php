@@ -19,6 +19,9 @@ class Login extends Controller
     
     function index()
     {
+        // setting the title
+        $this->view->title = 'Login';
+
         // rendering the view
         $this->view->render('login/index');
     }
