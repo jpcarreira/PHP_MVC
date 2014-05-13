@@ -27,7 +27,9 @@ class Note extends Controller
         $this->view->noteList = $this->model->noteList();
         
         // calling the render function
+        $this->view->render('header');
         $this->view->render('note/index');
+        $this->view->render('footer');
     }
     
     

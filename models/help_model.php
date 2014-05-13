@@ -15,12 +15,5 @@ class Help_Model extends Model
         // debug message
         //echo 'Help model <br />';
     }
-    
-    
-    function blah()
-    {
-        return 10 + 10;
-    }
-
 }
 

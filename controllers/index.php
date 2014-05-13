@@ -23,15 +23,9 @@ class Index extends Controller
         $this->view->title = 'Main page';
 
         // rendering the view
+        $this->view->render('header');
         $this->view->render('index/index'); 
+        $this->view->render('footer');
     }
-    
-    
-    // test function
-    function details()
-    {
-        $this->view->render('index/index');
-    }
-
 }
 

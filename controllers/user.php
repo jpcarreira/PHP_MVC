@@ -27,7 +27,9 @@ class User extends Controller
         $this->view->userList = $this->model->userList();
         
         // calling the render function
+        $this->view->render('header');
         $this->view->render('user/index');
+        $this->view->render('footer');
     }
     
     

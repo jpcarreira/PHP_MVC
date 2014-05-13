@@ -27,7 +27,9 @@ class Dashboard extends Controller
         $this->view->title = 'Dashboard'; 
         
         // calling the render function
+        $this->view->render('header');
         $this->view->render('dashboard/index');
+        $this->view->render('footer');
     }
     
     

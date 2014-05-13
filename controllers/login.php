@@ -23,7 +23,9 @@ class Login extends Controller
         $this->view->title = 'Login';
 
         // rendering the view
+        $this->view->render('header');
         $this->view->render('login/index');
+        $this->view->render('footer');
     }
     
     

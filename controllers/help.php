@@ -20,18 +20,8 @@ class Help extends Controller
         $this->view->title = 'Help';
 
         // calling the rendering function to display the correct view
+        $this->view->render('header');
         $this->view->render('help/index');
-    }
-    
-    
-    public function other($arg = false)
-    {
-        // requiring the respective model
-        require 'models/help_model.php';
-        $model = new Help_Model();
-        
-        
-        $this->view->blah = $model->blah();
-    }
-    
+        $this->view->render('footer');
+    }    
 }

@@ -27,7 +27,9 @@ class Error extends Controller
         $this->view->title = 'Error';
         
         // calling the render function
+        $this->view->render('header');
         $this->view->render('error/index');
+        $this->view->render('footer');
     }
 
 }
