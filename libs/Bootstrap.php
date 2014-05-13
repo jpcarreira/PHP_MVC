@@ -107,46 +107,71 @@ class Bootstrap
         }
     }
 
+
     /**
      * _callControllerMethod
      * 
      * if a method is passed in the GET url parameter we call that method
+     *         
+     * example for http://localhost/{controller}/{method}/{param1}/{param2}/{param3}/
+     *   
+     * url[0] = controller
+     * url[1] = method
+     * url[2] = param1
+     * url[3] = param2
+     * url[4] = param3
+     *
+     * note: this applies for a max of 3 parameters in a GET request
+     * for more than that use a POST request 
+     *
      */
     private function _callControllerMethod()
     {
-        // if [2] exists then it's a value that needs to be passed to the function
-        // e.g. help/doSomething/2, 2 will be the argument
-        if (isset($this->_url[2])) 
+ 
+        
+        // counting the number of parameters
+        $length =  count($this->_url);
+
+        if($length > 1)
         {
             // checking if method exists
-            if(method_exists($this->_controller, $this->_url[1]))
-            {
-                $this->_controller->{$this->_url[1]}($this->_url[2]);
-            }
-            else
+            if(!method_exists($this->_controller, $this->_url[1]))
             {
                 $this->_error();
             }
-        } 
-        else 
+        }
+        
+        // deciding which controller to load
+        switch ($length) 
         {
-            // if [1] exists then it's a method call so we make the controller to call 
-            // that function
-            if (isset($this->_url[1])) 
-            {
+            case 5:
+                // Controller -> Method(param1, param2, param3)
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
+                break;
+            
+            case 4:
+                // Controller -> Method(param1, param2)
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
+                break;
+            
+            case 3:
+                // Controller -> Method(param1)
                 if(method_exists($this->_controller, $this->_url[1]))
                 {
-                    $this->_controller->{$this->_url[1]}();
+                    $this->_controller->{$this->_url[1]}($this->_url[2]);
                 }
-                else
-                {
-                    $this->_error();
-                }
-            }
-            else
-            {
+                
+                break;
+            
+            case 2:
+                // Controller -> Method()
+                $this->_controller->{$this->_url[1]}();
+                break;
+            
+            default:
                 $this->_controller->index();
-            }
+                break;
+
         }
     }
     
