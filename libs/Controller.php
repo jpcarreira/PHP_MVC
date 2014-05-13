@@ -23,23 +23,25 @@ class Controller
         
     }
     
+
     /**
      * loadModel
      * 
      * this function picks the model child classes and 
      * 
-     * @param string $name  name of the model class
+     * @param string $name          name of the model class
+     * @param string $modelPath     location of the models
      */
-    public function loadModel($name)
+    public function loadModel($name, $modelPath = 'models/')
     {
         // path to the child model class
-        $path = 'models/' . $name . '_model.php';
+        $path = $modelPath . $name . '_model.php';
         
         // making the models include themselves if they exist
         // (as a model is always inside a controller we should enable it here)
         if(file_exists($path))
         {
-            require 'models/' . $name . '_model.php';
+            require $modelPath . $name . '_model.php';
             
             // instantiting the model class
             $modelName = $name . '_Model';

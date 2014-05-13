@@ -12,6 +12,15 @@ function __autoload($class)
 }
 
 // instantiating the bootstrap
-$app = new Bootstrap();
+$bootstrap = new Bootstrap();
+
+// below is optional, use together with the config.php if you want to use other paths
+// 
+// $bootstrap->setDefaultFile(DEFAULT_FILE);
+// $bootstrap->setErrorFile(ERROR_FILE);
+// $bootstrap->setModelPath(MODEL_PATH);
+// $bootstrap->setControllerPath(CONTROLLER_PATH);
+
+$bootstrap->init();
 
 

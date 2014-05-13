@@ -11,15 +11,20 @@ class Bootstrap
     private $_url = null;
 
     private $_controller = null;
+
+    private $_controllerPath = 'controllers/';
+    private $_modelPath = 'models/';
+    private $_defaultFile = 'index.php';
+    private $_errorFile = 'error.php';
     
+
     /**
-     * __construct
+     * init
+     *
+     * starts the bootstrap
      * 
-     * constructs the bootstrap
-     * 
-     * @return boolean|string
      */
-    function __construct() 
+    public function init()
     {
         // setting the protected $_url
         $this->_getUrl();
@@ -43,7 +48,51 @@ class Bootstrap
         // calling the controller method
         $this->_callControllerMethod();
     }
-    
+
+
+    /**
+     * (optional) sets a controller path for controllers
+     * 
+     * @param string $path 
+     */
+    public function setControllerPath($path)
+    {
+        $this->_controllerPath = trim($path, '/') . '/';
+    }
+
+
+    /**
+     * (optional) sets a controller path for models
+     * 
+     * @param string $path 
+     */
+    public function setModelPath($path)
+    {
+        $this->_modelPath = trim($path, '/') . '/';
+    }
+
+
+    /**
+     * (optional) sets a controller path for default file
+     * 
+     * @param string $path  use the filename only of your controller (e.g., index.php)
+     */
+    public function setDefaultFile($path)
+    {
+        $this->_defaultFile = trim($path, '/') . '/';
+    }
+
+
+    /**
+     * (optional) sets a controller path for error file
+     * 
+     * @param string $path  use the filename only of your controller (e.g., error.php)
+     */
+    public function setErrorFile($path)
+    {
+        $this->_errorFile = trim($path, '/') . '/';
+    }
+
     
     /**
      * _getUrl
@@ -68,7 +117,7 @@ class Bootstrap
      */
     private function _loadDefaultController()
     {
-        require 'controllers/index.php';
+        require $this->_controllerPath . $this->_defaultFile;
         $this->_controller = new Index();
 
         // we need to call the index method to render the window
@@ -87,7 +136,7 @@ class Bootstrap
     {
         // if the $_url is not empty then, before instantiating the controller,
         // we check if it's file actually exists
-        $file = 'controllers/' . $this->_url[0] . '.php';
+        $file = $this->_controllerPath . $this->_url[0] . '.php';
         
         if(file_exists($file))
         {
@@ -97,7 +146,7 @@ class Bootstrap
             $this->_controller = new $this->_url[0];
             
             // instantiating the controller and loading the respective model
-            $this->_controller->loadModel($this->_url[0]);
+            $this->_controller->loadModel($this->_url[0], $this->_modelPath);
         }
         // if that controller doesn't exist we throw an error
         else
@@ -185,7 +234,7 @@ class Bootstrap
      */
     private function _error()
     {
-        require 'controllers/error.php';
+        require $this->_controllerPath . $this->_errorFile;
         $this->_controller = new Error();
         $this->_controller->index();
         return;

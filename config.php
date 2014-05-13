@@ -13,6 +13,11 @@ define('URL', 'http://localhost/mvc/');
 define('LIBS', 'libs/');
 
 
+define('DEFAULT_FILE', 'index.php');
+define('ERROR_FILE', 'error.php');
+define('MODEL_PATH', '/models');
+define('CONTROLLER_PATH', '/controllers');
+
 //------------------------------------------------------------------------------
 
 
