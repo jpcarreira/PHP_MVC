@@ -7,6 +7,7 @@
  */
 
 // path for the project
+// IMPORTANT: when changing the path make sure you edit the .htaccess RewriteBase
 define('URL', 'http://localhost/mvc/');
 
 // path for library folder
