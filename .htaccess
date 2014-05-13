@@ -4,6 +4,11 @@
 # rules to redirect calls to index.php
 RewriteEngine On
 
+RewriteBase /mvc/
+
+# use below once it's on a website
+#RewriteBase /
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
